@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Yurumei</title>
+
+<!-- Fuentes -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  .about-section {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  margin: 40px auto;
+  max-width: 900px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+
+.about-section h2 {
+  font-family: "Playfair Display", serif;
+  color: var(--gold);
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.mission-vision {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.mission-vision div {
+  background: var(--card);
+  border-left: 5px solid var(--gold);
+  padding: 18px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+}
+
+.mission-vision h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+  :root{
+    --gold:#d48b3a;
+    --gold-2:#f2b84b;
+    --bg:#fffaf4;
+    --text:#222;
+    --muted:#666;
+    --card:#ffffff;
+    --radius:18px;
+    --glass: rgba(255,255,255,0.7);
+  }
+
+  /* Reset */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    color:var(--text);
+    background:linear-gradient(180deg, #fffaf4 0%, #fff 45%);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+    overflow-x:hidden;
+  }
+
+  /* HEADER */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;
+    z-index:1200;
+    background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid rgba(0,0,0,0.03);
+    box-shadow:0 6px 20px rgba(18,18,18,0.03);
+  }
+  .brand{
+    display:flex;align-items:center;gap:14px;
+  }
+  .brand h1{
+    font-family:"Playfair Display",serif;
+    color:var(--gold);
+    font-weight:600;
+    font-size:1.45rem;
+    letter-spacing:0.6px;
+  }
+  nav a{
+    margin-left:18px;
+    color:var(--text);
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    opacity:0.95;
+    transition:all .22s ease;
+  }
+  nav a:hover{color:var(--gold)}
+
+  /* HERO / BANNER */
+  .banner{
+    height:78vh;
+    min-height:520px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 20px;
+    margin-top:62px; /* header space */
+    background-image: url('1.jpg'); /* reemplaza si tu imagen local */
+    background-position:center;
+    background-size:cover;
+    background-attachment:fixed;
+    position:relative;
+    color: #fff;
+  }
+  .banner::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.28));
+    pointer-events:none;
+  }
+  .banner-inner{
+    position:relative; z-index:2; max-width:1100px; padding:40px;
+  }
+  .banner h2{
+    font-family:"Playfair Display",serif;
+    color:var(--gold);
+    font-size:3.2rem;
+    margin-bottom:12px;
+    text-shadow:0 8px 30px rgba(0,0,0,0.35);
+  }
+  .banner p{
+    color:#000; /* pedido: negro */
+    font-family:"Dancing Script",cursive; /* cursiva elegante */
+    font-size:1.35rem;
+    margin-top:12px;
+    background: rgba(255,255,255,0.95);
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:30px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  }
+
+  /* WRAPPER FOR CONTENT */
+  main{max-width:1200px;margin:0 auto; padding:40px 24px 120px}
+
+  /* SECTION TITLES */
+  .section-title{
+    font-family:"Playfair Display",serif;
+    color:var(--gold);
+    font-size:2.4rem;
+    margin-bottom:18px;
+    text-align:center;
+    position:relative;
+  }
+  .section-sub{
+    color:var(--muted);
+    text-align:center;
+    margin-bottom:28px;
+  }
+
+  /* TABS (MENU) */
+  .tabs{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:28px;
+  }
+  .tab{
+    background:var(--card);
+    border-radius:999px;
+    padding:10px 18px;
+    border:1px solid rgba(0,0,0,0.04);
+    cursor:pointer;
+    font-weight:600;
+    transition:all .22s ease;
+  }
+  .tab.active{
+    background:linear-gradient(90deg,var(--gold),var(--gold-2));
+    color:#fff;
+    box-shadow:0 8px 22px rgba(212,139,58,0.18);
+    transform:translateY(-3px);
+  }
+
+  .menu-area{
+    display:grid;
+    grid-template-columns: 1fr 380px;
+    gap:28px;
+    align-items:start;
+    margin-top:8px;
+  }
+
+  /* LIST OF DISHES */
+  .menu-list{
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .dish{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:14px 16px;
+    display:flex;gap:12px;align-items:center;
+    border:1px solid rgba(0,0,0,0.04);
+    transition:transform .22s ease, box-shadow .22s ease;
+    cursor:pointer;
+  }
+  .dish:hover{ transform:translateY(-6px); box-shadow:0 12px 30px rgba(18,18,18,0.06) }
+  .dish-thumb{width:68px;height:68px;border-radius:12px;overflow:hidden;flex-shrink:0}
+  .dish-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .dish-body{flex:1}
+  .dish-title{font-weight:700;color:var(--text)}
+  .dish-price{color:var(--gold);font-weight:700; margin-left:12px}
+  .dish-meta{font-size:0.92rem;color:var(--muted);margin-top:6px}
+
+  /* RIGHT PANEL: details */
+  .dish-detail{
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), #fff);
+    border-radius:16px;
+    padding:18px;
+    border:1px solid rgba(0,0,0,0.04);
+    min-height:160px;
+    display:flex;flex-direction:column;gap:12px;
+    align-items:flex-start;
+    transition:all .24s ease;
+  }
+  .detail-title{font-family:"Playfair Display",serif;font-size:1.25rem;color:var(--gold)}
+  .detail-desc{color:var(--muted);font-size:0.98rem}
+  .detail-extra{margin-top:auto;font-size:0.92rem;color:var(--muted)}
+
+  /* GALERÍA MASONRY INTERCALADA */
+  .galeria{
+    margin-top:48px;
+    padding-top:8px;
+  }
+  .masonry{
+    column-count:3;
+    column-gap:16px;
+  }
+  .masonry-item{
+    break-inside: avoid;
+    margin-bottom:16px;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 8px 24px rgba(0,0,0,0.08);
+    transition:transform .28s ease;
+  }
+  .masonry-item img{width:100%;display:block;height:auto;object-fit:cover}
+  .masonry-item:hover{transform:translateY(-6px) scale(1.01)}
+
+  /* TESTIMONIOS */
+  .testimonios{margin-top:46px}
+  .testimonial{
+    background:var(--card);
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.04);
+    margin:14px 0;
+  }
+  .quote{font-style:italic;color:var(--muted)}
+  .who{margin-top:10px;font-weight:700;color:var(--gold)}
+
+  /* FOOTER */
+  footer{
+    margin-top:36px;
+    padding:30px 16px;
+    text-align:center;
+    color:var(--text);
+    font-size:0.95rem;
+    border-top:1px solid rgba(0,0,0,0.03);
+  }
+
+  /* Small screens */
+  @media (max-width:980px){
+    .menu-area{grid-template-columns:1fr; }
+    .masonry{column-count:2}
+    header{padding:12px 18px}
+    .banner{height:64vh}
+    .banner h2{font-size:2.4rem}
+    .banner p{font-size:1.1rem}
+  }
+  @media (max-width:600px){
+    .masonry{column-count:1}
+    nav a{display:none} /* simplify */
+    .brand h1{font-size:1.2rem}
+    .banner h2{font-size:1.8rem}
+    body{font-size:15px}
+  }
+
+  /* small micro animations */
+  .fade-in{opacity:0;transform:translateY(8px);animation:fadeIn .6s forwards}
+  @keyframes fadeIn{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+ <header role="banner" aria-label="Cabezera de Yurumein">
+  <div class="brand" aria-hidden="false">
+    <h1>Yurumei</h1>
+  </div>
+  <nav role="navigation" aria-label="Menu principal">
+    <a href="#inicio">Inicio</a>
+    <a href="#menu">Menú</a>
+    <a href="#galeria">Galería</a>
+    <a href="Menú para Bar Popular Naranja Beige.pdf" target="_blank" rel="noopener noreferrer">Carta</a>
+  </nav>
+</header>
+
+
+  <!-- HERO / BANNER -->
+  <section class="banner" id="inicio" aria-label="Banner principal">
+    <div class="banner-inner">
+      <h2 id="bannerText">Sabores del Caribe, Hechos con Amor</h2>
+      <p id="subBanner">Una experiencia culinaria que celebra nuestras raíces con elegancia.</p>
+    </div>
+  </section>
+<div class="about-section">
+  <h2>Historia</h2>
+  <p>
+    Yurumei Sport Bar & Restaurant nació del esfuerzo de una familia garífuna. La empresa, fundada por Karla Leiva y Oscar Martínez, abrió el 4 de octubre de 2014. Con 11 años de operación continua, mantenemos un crecimiento sostenido, cercanía con la comunidad de Punta Gorda y un servicio cálido frente al mar. Yurumei significa San Vicente, origen histórico del pueblo garífuna, y refleja el orgullo por nuestras raíces.
+  </p>
+
+  <div class="mission-vision">
+    <div class="mission">
+      <h3>Nuestra Misión</h3>
+      <p>
+        Brindar una experiencia gastronómica auténtica de la cultura garífuna, con productos frescos y un servicio cercano, preservando nuestras tradiciones y aportando al desarrollo de Punta Gorda.
+      </p>
+    </div>
+    <div class="vision">
+      <h3>Nuestra Visión</h3>
+      <p>
+        Ser el restaurante referente de cocina garífuna en Islas de la Bahía, reconocido por la calidad de nuestros platos, la constancia en el servicio y el orgullo por nuestras raíces, creciendo sin perder nuestra esencia local.
+      </p>
+    </div>
+  </div>
+</div>
+
+  <!-- MAIN wrapper -->
+  <main>
+
+    <!-- MENÚ (pestañas + descripciones) -->
+    <section id="menu" aria-labelledby="menu-title" class="fade-in">
+      <h2 id="menu-title" class="section-title">Menú Yurumei</h2>
+      <p class="section-sub">Selecciona una categoría y toca un producto para ver su descripción.</p>
+
+      <!-- TABS -->
+      <div class="tabs" role="tablist" aria-label="Categorías del menú">
+        <button class="tab active" data-tab="mariscos" role="tab" aria-selected="true">🦞 Mariscos</button>
+        <button class="tab" data-tab="sopas" role="tab" aria-selected="false">🐟 Sopas y Machucas</button>
+        <button class="tab" data-tab="pescados" role="tab" aria-selected="false">🐠 Pescado</button>
+        <button class="tab" data-tab="carnes" role="tab" aria-selected="false">🍗 Pollo y Cerdo</button>
+        <button class="tab" data-tab="hamburguesas" role="tab" aria-selected="false">🍔 Hamburguesas</button>
+        <button class="tab" data-tab="complementos" role="tab" aria-selected="false">🍽️ Complementos</button>
+      </div>
+
+      <!-- AREA: list + detail -->
+      <div class="menu-area">
+
+        <!-- LEFT: lists -->
+        <div class="menus">
+
+          <!-- MARISCOS -->
+          <div class="menu-panel" data-panel="mariscos">
+            <div class="menu-list">
+              <div class="dish" data-name="Camarón empanizado o al ajillo" data-price="300" data-desc="Camarones frescos marinados con ajo caribeño y especias locales, servidos con guarnición de plátano frito.">
+                <div class="dish-thumb"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&w=800&q=60" alt="Camarones"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Camarón empanizado o al ajillo</div>
+                    <div class="dish-price">300</div>
+                  </div>
+                  <div class="dish-meta">Tamaño único • Sabor caribeño</div>
+                </div>
+              </div>
+
+              <div class="dish" data-name="Langosta empanizada o al ajillo" data-price="500" data-desc="Langosta premium de la costa, dorada a la perfección y bañada en mantequilla de ajo.">
+                <div class="dish-thumb"><img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&w=800&q=60" alt="Langosta"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Langosta empanizada o al ajillo</div>
+                    <div class="dish-price">500</div>
+                  </div>
+                  <div class="dish-meta">Premium • Ideal para compartir</div>
+                </div>
+              </div>
+
+              <div class="dish" data-name="Caracol empanizado o al ajillo" data-price="400" data-desc="Caracol tierno con especias tradicionales garífunas y un toque de coco.">
+                <div class="dish-thumb"><img src="14.jpg" alt="Caracol"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Caracol empanizado o al ajillo</div>
+                    <div class="dish-price">400</div>
+                  </div>
+                  <div class="dish-meta">Tradicional • Textura suave</div>
+                </div>
+              </div>
+
+              <div class="dish" data-name="Marisco mixto empanizado/al ajillo" data-price="600" data-desc="Langosta, camarón y caracol: la mejor combinación del mar, servida con guarnición." >
+                <div class="dish-thumb"><img src="15.jpg" alt="Marisco mixto"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Marisco mixto (langosta, camarón, caracol)</div>
+                    <div class="dish-price">600</div>
+                  </div>
+                  <div class="dish-meta">Para compartir • Recomendado</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SOPAS -->
+          <div class="menu-panel" data-panel="sopas" hidden>
+            <div class="menu-list">
+              <div class="dish" data-name="Machuca tradicional" data-price="280" data-desc="Plátano machucado acompañado de un caldo espeso de coco, pescado y mariscos frescos.">
+                <div class="dish-thumb"><img src="11.jpg" alt="Machuca"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Machuca tradicional</div>
+                    <div class="dish-price">280</div>
+                  </div>
+                  <div class="dish-meta">Plato típico • Sabor profundo</div>
+                </div>
+              </div>
+
+              <div class="dish" data-name="Machuca de casa" data-price="600" data-desc="Machuca con pescado, caracol, camarón, langosta y king crab — experiencia completa.">
+                <div class="dish-thumb"><img src="12.jpg" alt="Machuca especial"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Machuca de casa</div>
+                    <div class="dish-price">600</div>
+                  </div>
+                  <div class="dish-meta">Sabor abundante • Para compartir</div>
+                </div>
+              </div>
+
+              <div class="dish" data-name="Sopa marinera" data-price="350" data-desc="Camarones, pescado y cangrejo en un caldo aromático con coco y hierbas.">
+                <div class="dish-thumb"><img src="13.jpg" alt="Sopa marinera"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Sopa marinera</div>
+                    <div class="dish-price">350</div>
+                  </div>
+                  <div class="dish-meta">Caldo rico • Tradición marina</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PESCADOS -->
+          <div class="menu-panel" data-panel="pescados" hidden>
+            <div class="menu-list">
+              <div class="dish" data-name="Pescado pequeño" data-price="250" data-desc="Pescado fresco del día, frito o al ajillo, con acompañamientos tradicionales.">
+                <div class="dish-thumb"><img src="10.jpg" alt="Pescado"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Pescado pequeño</div>
+                    <div class="dish-price">250</div>
+                  </div>
+                  <div class="dish-meta">Opción ligera • Frescura diaria</div>
+                </div>
+              </div>
+
+              <div class="dish" data-name="Pescado grande (XL)" data-price="400" data-desc="Porción grande, ideal para dos personas, con sabor marino auténtico.">
+                <div class="dish-thumb"><img src="10.jpg" alt="Pescado XL"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Pescado XL grande</div>
+                    <div class="dish-price">400</div>
+                  </div>
+                  <div class="dish-meta">Ideal para compartir</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARNES -->
+          <div class="menu-panel" data-panel="carnes" hidden>
+            <div class="menu-list">
+              <div class="dish" data-name="Pollo guisado" data-price="200" data-desc="Pollo jugoso guisado con condimentos tradicionales, servido con arroz de coco.">
+                <div class="dish-thumb"><img src="16.jpg" alt="Pollo guisado"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Pollo guisado</div>
+                    <div class="dish-price">200</div>
+                  </div>
+                  <div class="dish-meta">Casero • Reconfortante</div>
+                </div>
+              </div>
+
+              <div class="dish" data-name="Chuleta de cerdo" data-price="250" data-desc="Chuleta jugosa con salsa caribeña de piña y miel.">
+                <div class="dish-thumb"><img src="17.jpg" alt="Chuleta"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Chuleta de cerdo</div>
+                    <div class="dish-price">250</div>
+                  </div>
+                  <div class="dish-meta">Sabor dulce-salado</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HAMBURGUESAS -->
+          <div class="menu-panel" data-panel="hamburguesas" hidden>
+            <div class="menu-list">
+              <div class="dish" data-name="Carne y papas" data-price="180" data-desc="Hamburguesa clásica de carne con papas; opción con quesos y toppings locales.">
+                <div class="dish-thumb"><img src="https://images.unsplash.com/photo-1550317138-10000687a72b?auto=format&w=800&q=60" alt="Hamburguesa"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Sencilla de carne (Carne y papas)</div>
+                    <div class="dish-price">180</div>
+                  </div>
+                  <div class="dish-meta">Clásica • Satisfactoria</div>
+                </div>
+              </div>
+
+              <div class="dish" data-name="Caracol y papas" data-price="250" data-desc="Topping de caracol sobre una hamburguesa jugosa para una fusión caribeña única.">
+                <div class="dish-thumb"><img src="18.jpg" alt="Hamburguesa especial"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Caracol y papas</div>
+                    <div class="dish-price">250</div>
+                  </div>
+                  <div class="dish-meta">Innovadora • Local</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- COMPLEMENTOS -->
+          <div class="menu-panel" data-panel="complementos" hidden>
+            <div class="menu-list">
+              <div class="dish" data-name="Orden de tajadas" data-price="80" data-desc="Plátanos fritos crujientes, perfectos como acompañamiento.">
+                <div class="dish-thumb"><img src="19.jpg" alt="Tajadas"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Orden de tajadas</div>
+                    <div class="dish-price">80</div>
+                  </div>
+                  <div class="dish-meta">Acompañamiento crocante</div>
+                </div>
+              </div>
+
+              <div class="dish" data-name="Arroz blanco" data-price="50" data-desc="Arroz blanco esponjoso, ideal como base de tus platos.">
+                <div class="dish-thumb"><img src="20.jpg" alt="Arroz"></div>
+                <div class="dish-body">
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <div class="dish-title">Arroz blanco</div>
+                    <div class="dish-price">50</div>
+                  </div>
+                  <div class="dish-meta">Porción individual</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: detalle -->
+        <aside class="dish-detail" aria-live="polite" id="detail">
+          <div class="detail-title">Selecciona un platillo</div>
+          <div class="detail-desc">Toca cualquier producto a la izquierda para ver la descripción detallada, ingredientes sugeridos y recomendaciones de acompañamiento.</div>
+          <div class="detail-extra">Precios expresados en Lempiras (o la moneda que uses).</div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- GALERÍA INTERCALADA (8 imágenes) -->
+    <section id="galeria" class="galeria fade-in" aria-labelledby="galeria-title">
+      <h2 id="galeria-title" class="section-title">Galería</h2>
+      <p class="section-sub">Momentos y platos que cuentan la historia de Yurumein.</p>
+
+      <div class="masonry" aria-hidden="false" aria-label="Galería intercalada">
+        <div class="masonry-item"><img src="2.jpeg" alt="Plato 1"></div>
+        <div class="masonry-item"><img src="3.jpeg" alt="Plato 2"></div>
+        <div class="masonry-item"><img src="4.jpeg" alt="Plato 3"></div>
+        <div class="masonry-item"><img src="5.jpeg" alt="Plato 4"></div>
+        <div class="masonry-item"><img src="6.jpeg" alt="Plato 5"></div>
+        <div class="masonry-item"><img src="7.jpeg" alt="Plato 6"></div>
+        <div class="masonry-item"><img src="8.jpeg" alt="Plato 7"></div>
+        <div class="masonry-item"><img src="9.jpeg" alt="Plato 8"></div>
+        
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="opiniones" class="testimonios" aria-labelledby="opiniones-title">
+      <h2 id="opiniones-title" class="section-title">Opiniones de Nuestros Clientes</h2>
+      <div class="testimonial">
+        <div class="quote">“Una joya escondida. Cada plato cuenta una historia del Caribe. ¡Simplemente exquisito!”</div>
+        <div class="who">— Andrea M.</div>
+      </div>
+      <div class="testimonial">
+        <div class="quote">“Ambiente cálido, sabores auténticos y una presentación impecable. Yurumei es pura magia.”</div>
+        <div class="who">— Luis R.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo">
+    © 2025 Yurumein Restaurante — Tradición y Sabor del Caribe.
+  </footer>
+
+<script>
+  // Banner phrases rotation (keeps same main line but could rotate subtitle if desired)
+  const bannerText = document.getElementById('bannerText');
+  // subtitle style already set by CSS (black + cursive)
+
+  // TABS logic
+  const tabs = document.querySelectorAll('.tabs .tab');
+  const panels = document.querySelectorAll('.menu-panel');
+
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      // toggle active on tabs
+      tabs.forEach(t=>{
+        t.classList.toggle('active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      // show correct panel
+      const key = tab.dataset.tab;
+      panels.forEach(p=>{
+        if(p.dataset.panel === key){
+          p.removeAttribute('hidden');
+          p.classList.add('fade-in');
+        } else {
+          p.setAttribute('hidden','');
+          p.classList.remove('fade-in');
+        }
+      });
+
+      // Reset detail panel
+      const detail = document.getElementById('detail');
+      detail.querySelector('.detail-title').textContent = 'Selecciona un platillo';
+      detail.querySelector('.detail-desc').textContent = 'Toca cualquier producto a la izquierda para ver la descripción detallada, ingredientes sugeridos y recomendaciones de acompañamiento.';
+      detail.querySelector('.detail-extra').textContent = 'Precios expresados en Lempiras (o la moneda que uses).';
+    });
+  });
+
+  // DISH click -> show detail
+  const dishes = document.querySelectorAll('.dish');
+  dishes.forEach(d=>{
+    d.addEventListener('click', ()=>{
+      const name = d.dataset.name || d.querySelector('.dish-title')?.textContent;
+      const price = d.dataset.price || d.querySelector('.dish-price')?.textContent;
+      const desc = d.dataset.desc || d.querySelector('.dish-meta')?.textContent || '';
+      const detail = document.getElementById('detail');
+      detail.querySelector('.detail-title').textContent = name;
+      detail.querySelector('.detail-desc').textContent = desc;
+      detail.querySelector('.detail-extra').textContent = 'Precio: ' + (price ? price + ' L' : 'Consultar');
+      // subtle animation
+      detail.style.transform = 'translateY(-6px)';
+      detail.style.boxShadow = '0 18px 40px rgba(18,18,18,0.06)';
+      setTimeout(()=>{ detail.style.transform='none'; detail.style.boxShadow='none'; }, 420);
+    });
+  });
+
+  // Accessibility: keyboard navigation for dishes
+  dishes.forEach(d=>{
+    d.setAttribute('tabindex','0');
+    d.addEventListener('keydown', (ev)=>{
+      if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault();
+        d.click();
+      }
+    });
+  });
+
+  // Small: ensure first panel visible on load
+  (function init(){
+    const active = document.querySelector('.tab.active') || tabs[0];
+    active && active.click();
+  })();
+</script>
+
+</body>
+</html>
