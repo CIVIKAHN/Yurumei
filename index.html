@@ -267,6 +267,32 @@
   }
   .quote{font-style:italic;color:var(--muted)}
   .who{margin-top:10px;font-weight:700;color:var(--gold)}
+.banner-button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, #d48b3a, #f2b84b); /* gradiente dorado */
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  border-radius: 50px; /* redondeado elegante */
+  box-shadow: 0 8px 20px rgba(212,139,58,0.25);
+  transition: all 0.3s ease;
+  letter-spacing: 0.8px;
+}
+
+.banner-button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(212,139,58,0.35);
+  background: linear-gradient(135deg, #f2b84b, #d48b3a); /* ligero cambio de gradiente al hover */
+}
+
+.banner-button:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 6px 18px rgba(212,139,58,0.2);
+}
 
   /* FOOTER */
   footer{
@@ -317,12 +343,15 @@
 
 
   <!-- HERO / BANNER -->
-  <section class="banner" id="inicio" aria-label="Banner principal">
-    <div class="banner-inner">
-      <h2 id="bannerText">Sabores del Caribe, Hechos con Amor</h2>
-      <p id="subBanner">Una experiencia culinaria que celebra nuestras raíces con elegancia.</p>
-    </div>
-  </section>
+ <section class="banner" id="inicio" aria-label="Banner principal">
+  <div class="banner-inner">
+    <h2 id="bannerText">Sabores del Caribe, Hechos con Amor</h2>
+    <p id="subBanner">Una experiencia culinaria que celebra nuestras raíces con elegancia.</p>
+    <!-- Botón Carta -->
+    <a href="Menú para Bar Popular Naranja Beige.pdf" target="_blank" rel="noopener noreferrer" class="banner-button">Carta</a>
+  </div>
+</section>
+
 <div class="about-section">
   <h2>Historia</h2>
   <p>
